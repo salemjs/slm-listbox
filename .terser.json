@@ -1,0 +1,10 @@
+{
+    "parse": {},
+    "mangle": {
+        "properties": {
+            "regex": "^_[^_]"
+        }
+    },
+    "sourceMap": false,
+    "ecma": 8
+}

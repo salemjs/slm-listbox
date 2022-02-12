@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="slm-listbox.min.js"></script>
+        <style>
+            slm-listbox {
+                display: flex;
+                flex-direction: column;
+            }
+            slm-option {
+                cursor: pointer;
+                display: block;
+                padding: 8px;
+            }
+            slm-option:hover {
+                background-color: #c5c5c5;
+            }
+            .mt_8 {
+                margin-top: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Example</h1>
+        <form method="get">
+            <slm-listbox name="test">
+                <slm-option value="">No value</slm-option>
+                <slm-option value="1">Value 1</slm-option>
+                <slm-option value="2">Value 2</slm-option>
+            </slm-listbox>
+            <button type="submit" class="mt_8">Submit</button>
+        </form>
+    </body>
+</html>
