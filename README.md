@@ -1,6 +1,6 @@
 # &lt;slm-listbox&gt; element
 
-Compact (549 bytes min+gzip) and user-friendly. A simple and form submittable js listbox web component. There are no extra requirements.
+Compact (492 bytes min+gzip) and user-friendly. A simple js listbox web component. There are no extra requirements.
 
 ![Done](https://c.tenor.com/iN6--FUiMnAAAAAC/noted-notes.gif)
 
@@ -8,19 +8,23 @@ Compact (549 bytes min+gzip) and user-friendly. A simple and form submittable js
 
 To create a listbox:
 
-`<slm-listbox name="test">
+```
+<input type="hidden" name="test" id="target-it" />
+<slm-listbox target="#target-id">
     <slm-option value="">No value</slm-option>
     <slm-option value="1">Value 1</slm-option>
     <slm-option value="2">Value 2</slm-option>
-</slm-listbox>`
+</slm-listbox>
+```
 
 ## Browser support
 
-I do not offer IE11 support, but you may be able to make it work with polyfills. At the moment Safari is not supported, but I'm working on a solution
+I do not offer IE11 support, but you may be able to make it work with polyfills.
 
--   Chrome 77
--   Firefox 93
--   Microsoft Edge 79
+-   Chrome
+-   Firefox
+-   Microsoft Edge (Chrome based)
+-   Safari
 
 ## License
 

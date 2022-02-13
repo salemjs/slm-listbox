@@ -1,7 +1,7 @@
 {
     "name": "slm-listbox",
-    "version": "1.0.0",
-    "description": "",
+    "version": "1.0.1",
+    "description": "Compact (492 bytes min+gzip) and user-friendly. A simple js listbox web component",
     "main": "src/listbox.js",
     "module": "src/listbox.js",
     "directories": {

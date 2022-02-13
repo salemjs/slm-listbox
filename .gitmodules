@@ -1,0 +1,3 @@
+[submodule "src/util-target"]
+	path = src/util-target
+	url = git@github.com:salemjs/util-target.git

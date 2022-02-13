@@ -1,13 +1,32 @@
 (function () {
     'use strict';
 
+    /**
+     * @public {function}
+     * @param {Element} element
+     * @return {Element}
+     */
+    const targetElement = (element) => {
+        const TARGET_ATTRIBUTE = 'target';
+        const target = element.getAttribute(TARGET_ATTRIBUTE);
+        if (!target) {
+            return null;
+        }
+        const TARGET_PARENT_ATTRIBUTE = 'target-parent';
+        const targetParent = element.hasAttribute(TARGET_PARENT_ATTRIBUTE)
+            ? element.closest(element.getAttribute(TARGET_PARENT_ATTRIBUTE))
+            : element.parentElement;
+        if (!targetParent) {
+            return null;
+        }
+        return targetParent.querySelector(target);
+    };
+
     const OPTION_TAG = 'slm-option';
 
     class SlmListboxElement extends HTMLElement {
-        static formAssociated = true;
-
         connectedCallback() {
-            this._internals = this.attachInternals();
+            this._valueElement = targetElement(this);
             this.addEventListener('click', this._onClickOption);
             if (!this.value) {
                 this._setDefaultValue();
@@ -18,40 +37,15 @@
             this.removeEventListener('click', this._onClickOption);
         }
 
-        get form() {
-            return this._internals.form;
-        }
-
-        get name() {
-            return this.getAttribute('name');
-        }
-
-        get type() {
-            return this.localName;
-        }
-
-        get validity() {
-            return this._internals.validity;
-        }
-
-        get validationMessage() {
-            return this._internals.validationMessage;
-        }
-
-        get willValidate() {
-            return this._internals.willValidate;
-        }
-
         get value() {
-            return this.getAttribute('value');
+            return this._valueElement.getAttribute('value');
         }
 
         set value(value) {
             if (this.hasAttribute('disabled')) {
                 return;
             }
-            this.setAttribute('value', value || '');
-            this._internals.setFormValue(value);
+            this._valueElement.setAttribute('value', value || '');
         }
 
         /**
@@ -95,22 +89,6 @@
          */
         options() {
             return Array.from(this.querySelectorAll(OPTION_TAG));
-        }
-
-        /**
-         * @public {function}
-         * @return {Boolean}
-         */
-        checkValidity() {
-            return this._internals.checkValidity();
-        }
-
-        /**
-         * @public {function}
-         * @return {Boolean}
-         */
-        reportValidity() {
-            return this._internals.reportValidity();
         }
     }
     window.customElements.define('slm-listbox', SlmListboxElement);
